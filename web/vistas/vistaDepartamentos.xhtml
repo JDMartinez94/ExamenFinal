@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Departamentos</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <h:body>
+        <h1>Soporte de base de datos - DEPARTAMENTOS</h1>        
+        <h3>Tabla Departamentos</h3>
+        
+        <h:form>
+            <h:inputText value="#{departamentoMBean.idDepartamento}"></h:inputText><br></br>
+            <h:inputText value="#{departamentoMBean.nombreDepto}"></h:inputText><br></br>
+            <h:inputText value="#{departamentoMBean.cantEmpleados}"></h:inputText><br></br>
+            <h:inputText value="#{departamentoMBean.codTels}"></h:inputText><br></br>
+            <h:commandButton value="Agregar" action="#{departamentoMBean.agregarDepartamento()}"></h:commandButton>
+            <h:commandButton value="Modificar" action="#{departamentoMBean.modificarDepartamento()}"></h:commandButton>
+            <h:commandButton value="Eliminar" action="#{departamentoMBean.eliminarDepartamento()}"></h:commandButton>            
+        </h:form>
+        <br></br>
+    <h:dataTable value="#{departamentoMBean.tablaDepartamentos}" var="dep">
+        <h:column>
+            <f:facet name="header">ID DEPARTAMENTO</f:facet>
+            <h:outputText value="#{dep.idDepartamento}"></h:outputText>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">NOMBRE DEPARTAMENTO</f:facet>
+            <h:outputText value="#{dep.nombreDepto}"></h:outputText>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">CANTIDAD DE EMPLEADOS</f:facet>
+            <h:outputText value="#{dep.cantEmpleados}"></h:outputText>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">CODIGO DE TELEFONOS</f:facet>
+            <h:outputText value="#{dep.codTels.codTels}"></h:outputText>
+        </h:column>
+
+    </h:dataTable>
+ 
+    </h:body>
+</html>

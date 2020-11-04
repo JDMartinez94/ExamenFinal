@@ -28,11 +28,12 @@ public class departamentoMBean {
     private int idDepartamento;
     private String nombreDepto;
     private int cantEmpleados;
-    private Telefono codTels;
-
+    private Telefono codTels;   
+    
     public int getIdDepartamento() {
         return idDepartamento;
-    }
+    }   
+    
 
     public void setIdDepartamento(int idDepartamento) {
         this.idDepartamento = idDepartamento;
