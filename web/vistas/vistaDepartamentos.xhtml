@@ -43,9 +43,45 @@
         <a href="#{request.contextPath}/faces/vistas/vistaUsuarios.xhtml" class="badge badge-dark"><li>Usuarios</li></a>
     </ul>
     </div>
-    <div style="width: 90%; padding-left: 5px">
-      
-        <!-- ACA HAREMOS NUESTRAS VISTAS-->
+    <div style="width: 90%; padding-left: 5px; text-align: center">
+                               
+                <h3>Soporte de base de datos - DEPARTAMENTOS</h3>
+
+                <h:form>
+                    <h:inputText value="#{departamentoMBean.idDepartamento}"></h:inputText><br></br>
+                    <h:inputText value="#{departamentoMBean.nombreDepto}"></h:inputText><br></br>
+                    <h:inputText value="#{departamentoMBean.cantEmpleados}"></h:inputText><br></br>
+                    <h:inputText value="#{departamentoMBean.codTels}"></h:inputText><br></br>
+                    <h:commandButton value="Agregar" action="#{departamentoMBean.agregarDepartamento()}"></h:commandButton>
+                    <h:commandButton value="Modificar" action="#{departamentoMBean.modificarDepartamento()}"></h:commandButton>
+                    <h:commandButton value="Eliminar" action="#{departamentoMBean.eliminarDepartamento()}"></h:commandButton>            
+                </h:form>
+                <br></br>
+                <center>
+                    <h:dataTable value="#{departamentoMBean.tablaDepartamentos}" var="dep" class="table table-hover">
+                <h:column>
+                    <f:facet name="header">ID DEPARTAMENTO</f:facet>
+                    <h:outputText value="#{dep.idDepartamento}"></h:outputText>
+                    <img src="../vistas/recursos/modificar.png" height="20px"/>
+                    <img src="../vistas/recursos/borrar.png" height="20px"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">NOMBRE DEPARTAMENTO</f:facet>
+                    <h:outputText value="#{dep.nombreDepto}"></h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">CANTIDAD DE EMPLEADOS</f:facet>
+                    <h:outputText value="#{dep.cantEmpleados}"></h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">CODIGO DE TELEFONOS</f:facet>
+                    <h:outputText value="#{dep.codTels.codTels}"></h:outputText>
+                </h:column>                    
+                </h:dataTable>
+                </center>
         
     </div>        
     </div>
