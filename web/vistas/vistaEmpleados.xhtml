@@ -4,51 +4,78 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>        
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
         <title>Empleados</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
-    <body>        
-        
-        <h:dataTable value="#{empleadoMBean.tablaEmpleado}" var="emp">
-        <h:column>
-            <f:facet name="header">CODIGO EMPLEADO</f:facet>
-            <h:outputText value="#{emp.codEmpleado}"></h:outputText>
-        </h:column>
-        
-        <h:column>
-            <f:facet name="header">NOMBRES</f:facet>
-            <h:outputText value="#{emp.nombres}"></h:outputText>
-        </h:column>
-            
-        <h:column>
-            <f:facet name="header">APELLIDOS</f:facet>
-            <h:outputText value="#{emp.apellidos}"></h:outputText>
-        </h:column>
-            
-        <h:column>
-            <f:facet name="header">ID DEPARTAMENTO</f:facet>
-            <h:outputText value="#{emp.idDepartamento.idDepartamento}"></h:outputText>
-        </h:column>
-            
-        <h:column>
-            <f:facet name="header">SALARIO</f:facet>
-            <h:outputText value="$ #{emp.salario}"></h:outputText>
-        </h:column>
-            
-        <h:column>
-            <f:facet name="header">EDAD</f:facet>
-            <h:outputText value="#{emp.edad}"></h:outputText>
-        </h:column>
-            
-        <h:column>
-            <f:facet name="header">ID USUARIO</f:facet>
-            <h:outputText value="#{emp.idUsuario.idusuario}"></h:outputText>
-        </h:column>
-            
-    </h:dataTable>
+<h:body id="page-top">
 
+  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
+      <h3 style="color: white">Mantenimiento de base de datos</h3>
+
+    <!-- Navbar -->
+    <ul class="navbar-nav ml-auto ml-md-0">     
         
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user-circle fa-fw"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Salir</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+    <div class="container-fluid">
+    <div class="row">
+    <!-- Sidebar -->
+    <div style="width: 10%; color: white">
+        <ul class="sidebar navbar-nav bg-dark" style="padding-left: 5px">
+        <br></br>        
+        <li>Departamentos</li>
+        <li>Empleados</li>
+        <li>Telefonos</li>
+        <li>Usuarios</li>
+    </ul>
+    </div>
+    <div style="width: 90%">
+      
+    <!-- ACA HAREMOS NUESTRAS VISTAS-->
         
-    </body>
+    </div>        
+    </div>
+        <footer class="sticky-footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Creado por Josue Martinez y Alcides Medina | DAUTE |2020</span>
+          </div>
+        </div>
+        </footer>
+    </div>
+  <!-- /#wrapper -->
+
+  <!-- Salir Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¿Seguro que desea salir?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Seleccione "Salir" si desea terminar su sesion.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="#{request.contextPath}/faces/index.xhtml">Salir</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</h:body>
 </html>
