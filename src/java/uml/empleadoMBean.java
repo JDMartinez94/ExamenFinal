@@ -31,7 +31,7 @@ public class empleadoMBean {
     private int idDepartamento;
     private Float salario;
     private int edad;
-    private Usuarios idUsuario;
+    private int idUsuario;
 
     public int getCodEmpleado() {
         return codEmpleado;
@@ -81,11 +81,11 @@ public class empleadoMBean {
         this.edad = edad;
     }
 
-    public Usuarios getIdUsuario() {
+    public int getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Usuarios idUsuario) {
+    public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
     

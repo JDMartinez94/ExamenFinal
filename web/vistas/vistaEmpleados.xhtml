@@ -2,8 +2,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>        
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -11,6 +10,32 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
         <title>Empleados</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <script>
+        function cargar(codEmp,nomb,ape,idDep,sal,edad,idUser)
+            {
+                document.getElementById('myForm:codEmp').value=codEmp;
+                document.getElementById('myForm:nomb').value=nomb;
+                document.getElementById('myForm:ape').value=ape;
+                document.getElementById('myForm:idDep').value=idDep;
+                document.getElementById('myForm:sal').value=sal;
+                document.getElementById('myForm:edad').value=edad;
+                document.getElementById('myForm:idUser').value=idUser;
+            }
+            
+            function limpiar()
+            {
+                document.getElementById('myForm:codEmp').value=null;
+                document.getElementById('myForm:nomb').value=null;
+                document.getElementById('myForm:ape').value=null;
+                document.getElementById('myForm:idDep').value=null;
+                document.getElementById('myForm:sal').value=null;
+                document.getElementById('myForm:edad').value=null;
+                document.getElementById('myForm:idUser').value=null;
+            }
+            
+        </script>
+        
     </head>
 <h:body id="page-top">
 
@@ -47,20 +72,31 @@
     <div style="width: 90%; padding-left: 5px; text-align: center">
         <br></br>
                 <h3>Soporte de base de datos - EMPLEADOS</h3>
-
-                <h:form>
-                    <h:inputText value="#{empleadoMBean.codEmpleado}" p:placeholder="codigo de empleado"></h:inputText><br></br>
-                    <h:inputText value="#{empleadoMBean.nombres}" p:placeholder="Nombres"></h:inputText><br></br>
-                    <h:inputText value="#{empleadoMBean.apellidos}" p:placeholder="Apellidos"></h:inputText><br></br>
-                    <h:inputText value="#{empleadoMBean.idDepartamento}" p:placeholder="ID Departamento"></h:inputText><br></br>
-                    <h:inputText value="#{empleadoMBean.salario}" p:placeholder="Salario"></h:inputText><br></br>
-                    <h:inputText value="#{empleadoMBean.edad}" p:placeholder="Edad"></h:inputText><br></br>
-                    <h:inputText value="#{empleadoMBean.idUsuario}" p:placeholder="ID Usuario"></h:inputText><br></br>
+                <br></br>
+                <center>
+                <div style="width: 35%">
+                <h:form id="myForm" class="form-group">
+                    Codigo de empleado<br></br>
+                    <h:inputText readonly="#{facesContext.renderResponse}" value="#{empleadoMBean.codEmpleado}" class="form-control" id="codEmp"></h:inputText><br></br>
+                    Nombres<br></br>
+                    <h:inputText value="#{empleadoMBean.nombres}" class="form-control" id="nomb"></h:inputText><br></br>
+                    Apellidos<br></br>
+                    <h:inputText value="#{empleadoMBean.apellidos}" class="form-control" id="ape"></h:inputText><br></br>
+                    ID Departamento<br></br>
+                    <h:inputText value="#{empleadoMBean.idDepartamento}" class="form-control" id="idDep"></h:inputText><br></br>
+                    Salario<br></br>
+                    <h:inputText value="#{empleadoMBean.salario}" class="form-control" id="sal"></h:inputText><br></br>
+                    Edad<br></br>
+                    <h:inputText value="#{empleadoMBean.edad}" class="form-control" id="edad"></h:inputText><br></br>
+                    ID Usuario<br></br>
+                    <h:inputText value="#{empleadoMBean.idUsuario}" class="form-control" id="idUser"></h:inputText><br></br>
                     
-                    <h:commandButton value="Agregar" action="#{empleadoMBean.agregarEmpleado()}"></h:commandButton>
-                    <h:commandButton value="Modificar" action="#{empleadoMBean.modificarEmpleado()}"></h:commandButton>
-                    <h:commandButton value="Eliminar" action="#{empleadoMBean.eliminarEmpleado()}"></h:commandButton>            
+                    <h:commandButton class="btn btn-success" value="Agregar" action="#{empleadoMBean.agregarEmpleado()}"></h:commandButton>
+                    <h:commandButton class="btn btn-info" value="Modificar" action="#{empleadoMBean.modificarEmpleado()}"></h:commandButton>
+                    <h:commandButton class="btn btn-danger" value="Eliminar" action="#{empleadoMBean.eliminarEmpleado()}"></h:commandButton><br></br><br></br>
+                    <h:commandButton class="btn btn-secondary" onclick="javascript:limpiar()" value="Limpiar el formulario"></h:commandButton>      
                 </h:form>
+                </div>
       <br></br>
                 <h:dataTable value="#{empleadoMBean.tablaEmpleado}" var="emp" class="table table-hover">
                 <h:column>
@@ -97,9 +133,15 @@
                     <f:facet name="header">ID USUARIO</f:facet>
                     <h:outputText value="#{emp.idUsuario.idusuario}"></h:outputText>
                 </h:column>
+                    
+                <h:column>
+                    <f:facet name="header">SELECCIONAR</f:facet>
+                    <a href="javascript:cargar('#{emp.codEmpleado}','#{emp.nombres}','#{emp.apellidos}','#{emp.idDepartamento.idDepartamento}','#{emp.salario}','#{emp.edad}','#{emp.idUsuario.idusuario}')">
+                        <img src="recursos/edit.png" height="20px" /></a>
+                </h:column>
 
             </h:dataTable>
-        
+        </center>
     </div>        
     </div>
         <footer class="sticky-footer">
