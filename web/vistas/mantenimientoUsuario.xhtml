@@ -7,33 +7,31 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
-        <title>Login</title>
+        <title>Mantenimiento de Usuario</title>
     </h:head>
     <h:body class="bg-dark">
     <div class="container">
     
         <div class="card card-login mx-auto mt-5" style="width: 400px">
-        <div class="card-header">Ingresar al sistema</div>      
+        <div class="card-header">Crear usuario / Mantenimiento de cuenta</div>      
         <div class="card-body">
         <form>          
         <div class="form-group">            
         <div class="form-label-group">
-            <input type="text" id="inputEmail" class="form-control" placeholder="Usuario" required="required" value="${usuariosMBean.usuario}" />
-              <label for="inputEmail">Usuario</label>
+            <label for="inputEmail">Usuario</label>
+            <input type="text" id="inputEmail" class="form-control" placeholder="Usuario" required="required" value="${usuariosMBean.usuario}" />              
             </div>
           </div>
           
         <div class="form-group">
 
         <div class="form-label-group">
-            <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="required" value="${usuariosMBean.contra}" />
-              <label for="inputPassword">Contraseña</label>
+            <label for="inputPassword">Contraseña</label>
+            <input type="text" id="inputPassword" class="form-control" placeholder="Contraseña" required="required" value="${usuariosMBean.contra}" />              
             </div>
           </div>
-        <input type="submit" class="btn btn-primary btn-block" value="Login" />
+        <input type="submit" class="btn btn-primary btn-block" value="Crear cuenta / Actualizar cuenta" />
         </form>
-        <br></br>        
-        <a class="btn btn-secondary btn-block" href="#{request.contextPath}/faces/vistas/mantenimientoUsuario.xhtml">Crear una cuenta</a>
       </div>        
     </div>
   </div>
