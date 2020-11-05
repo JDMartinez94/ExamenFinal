@@ -9,7 +9,10 @@ import controladores.UsuariosJpaController;
 import java.util.*;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.naming.NamingException;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -95,6 +98,46 @@ public class usuariosMBean {
         }
     }
     
-    
+    public String validateUsernamePassword()
+    {
+        try {
+            List<Usuarios> ls = new ArrayList<>();
+            UsuariosJpaController ctrl = new UsuariosJpaController();
+            ls = ctrl.findUsuariosEntities();
+
+            if(usuario.isEmpty() && contra.isEmpty())
+            {
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, new FacesMessage("Debe ingresar usuario y contraseña."));
+            }
+            else
+            {
+                for(Usuarios us : ls)
+                {
+                    if(us.getUsuario().equals(usuario) && us.getContra().equals(contra))
+                    {
+                        setNivel(us.getNivel());
+                        String uss = us.getUsuario();
+                        String niv = us.getNivel();
+                        int idus = us.getIdusuario();
+                        HttpSession session = SessionUtils.getSession();
+                        session.setAttribute("username", uss);
+                        session.setAttribute("level", niv);
+                        session.setAttribute("iduser", idus);                        
+                        return "admin"; 
+                    }
+                    else
+                    {
+                        FacesContext context = FacesContext.getCurrentInstance();
+                        context.addMessage(null, new FacesMessage("Usuario o contraseña inválidos. Intente de nuevo."));
+                    }
+                }
+                
+            }
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+        return "login_index";
+    }
     
 }
