@@ -6,7 +6,7 @@
 package uml;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.*;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,7 +44,7 @@ public class Departamento implements Serializable {
     @Column(name = "cantEmpleados")
     private Integer cantEmpleados;
     @OneToMany(mappedBy = "idDepartamento")
-    private List<Empleado> empleadoList;
+    private List<Empleado> empleadoList = new ArrayList<Empleado>();
     @JoinColumn(name = "codTels", referencedColumnName = "codTels")
     @ManyToOne
     private Telefono codTels;
@@ -52,11 +52,11 @@ public class Departamento implements Serializable {
     public Departamento() {
     }
 
-    public Departamento(Integer idDepartamento, String nombreDepto, Integer cantEmpleados, Telefono codTels) {
+    public Departamento(Integer idDepartamento, String nombreDepto, Integer cantEmpleados, int codTels) {
         this.idDepartamento = idDepartamento;
         this.nombreDepto = nombreDepto;
         this.cantEmpleados = cantEmpleados;
-        this.codTels = codTels;
+        this.codTels = new Telefono(codTels);
     }  
     
 

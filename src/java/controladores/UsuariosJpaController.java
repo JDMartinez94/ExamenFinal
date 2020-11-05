@@ -221,6 +221,6 @@ public class UsuariosJpaController implements Serializable {
         } finally {
             em.close();
         }
-    }
-    
+    }  
+
 }

@@ -28,7 +28,7 @@ public class empleadoMBean {
     private int codEmpleado;
     private String nombres;
     private String apellidos;
-    private Departamento idDepartamento;
+    private int idDepartamento;
     private Float salario;
     private int edad;
     private Usuarios idUsuario;
@@ -57,15 +57,15 @@ public class empleadoMBean {
         this.apellidos = apellidos;
     }
 
-    public Departamento getIdDepartamento() {
+    public int getIdDepartamento() {
         return idDepartamento;
     }
 
-    public void setIdDepartamento(Departamento idDepartamento) {
+    public void setIdDepartamento(int idDepartamento) {
         this.idDepartamento = idDepartamento;
     }
 
-    public double getSalario() {
+    public Float getSalario() {
         return salario;
     }
 

@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <head>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>        
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -43,9 +44,61 @@
         <a href="#{request.contextPath}/faces/vistas/vistaUsuarios.xhtml" class="badge badge-dark"><li>Usuarios</li></a>
     </ul>
     </div>
-    <div style="width: 90%; padding-left: 5px">
-      
-        <!-- ACA HAREMOS NUESTRAS VISTAS-->
+    <div style="width: 90%; padding-left: 5px; text-align: center">
+        <br></br>
+                <h3>Soporte de base de datos - EMPLEADOS</h3>
+
+                <h:form>
+                    <h:inputText value="#{empleadoMBean.codEmpleado}" p:placeholder="codigo de empleado"></h:inputText><br></br>
+                    <h:inputText value="#{empleadoMBean.nombres}" p:placeholder="Nombres"></h:inputText><br></br>
+                    <h:inputText value="#{empleadoMBean.apellidos}" p:placeholder="Apellidos"></h:inputText><br></br>
+                    <h:inputText value="#{empleadoMBean.idDepartamento}" p:placeholder="ID Departamento"></h:inputText><br></br>
+                    <h:inputText value="#{empleadoMBean.salario}" p:placeholder="Salario"></h:inputText><br></br>
+                    <h:inputText value="#{empleadoMBean.edad}" p:placeholder="Edad"></h:inputText><br></br>
+                    <h:inputText value="#{empleadoMBean.idUsuario}" p:placeholder="ID Usuario"></h:inputText><br></br>
+                    
+                    <h:commandButton value="Agregar" action="#{empleadoMBean.agregarEmpleado()}"></h:commandButton>
+                    <h:commandButton value="Modificar" action="#{empleadoMBean.modificarEmpleado()}"></h:commandButton>
+                    <h:commandButton value="Eliminar" action="#{empleadoMBean.eliminarEmpleado()}"></h:commandButton>            
+                </h:form>
+      <br></br>
+                <h:dataTable value="#{empleadoMBean.tablaEmpleado}" var="emp" class="table table-hover">
+                <h:column>
+                    <f:facet name="header">CODIGO EMPLEADO</f:facet>
+                    <h:outputText value="#{emp.codEmpleado}"></h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">NOMBRES</f:facet>
+                    <h:outputText value="#{emp.nombres}"></h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">APELLIDOS</f:facet>
+                    <h:outputText value="#{emp.apellidos}"></h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">ID DEPARTAMENTO</f:facet>
+                    <h:outputText value="#{emp.idDepartamento.idDepartamento}"></h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">SALARIO</f:facet>
+                    <h:outputText value="$ #{emp.salario}"></h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">EDAD</f:facet>
+                    <h:outputText value="#{emp.edad}"></h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">ID USUARIO</f:facet>
+                    <h:outputText value="#{emp.idUsuario.idusuario}"></h:outputText>
+                </h:column>
+
+            </h:dataTable>
         
     </div>        
     </div>

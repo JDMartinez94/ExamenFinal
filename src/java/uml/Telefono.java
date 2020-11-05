@@ -6,7 +6,7 @@
 package uml;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.*;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,7 +42,7 @@ public class Telefono implements Serializable {
     @Column(name = "telDescrip", length = 30)
     private String telDescrip;
     @OneToMany(mappedBy = "codTels")
-    private List<Departamento> departamentoList;
+    private List<Departamento> departamentoList = new ArrayList<Departamento>();
 
     public Telefono() {
     }

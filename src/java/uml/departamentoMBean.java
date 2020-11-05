@@ -28,7 +28,7 @@ public class departamentoMBean {
     private int idDepartamento;
     private String nombreDepto;
     private int cantEmpleados;
-    private Telefono codTels;   
+    private int codTels;   
     
     public int getIdDepartamento() {
         return idDepartamento;
@@ -55,11 +55,11 @@ public class departamentoMBean {
         this.cantEmpleados = cantEmpleados;
     }
 
-    public Telefono getCodTels() {
+    public int getCodTels() {
         return codTels;
     }
 
-    public void setCodTels(Telefono codTels) {
+    public void setCodTels(int codTels) {
         this.codTels = codTels;
     } 
     

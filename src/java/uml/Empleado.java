@@ -58,13 +58,13 @@ public class Empleado implements Serializable {
     public Empleado() {
     }
 
-    public Empleado(Integer codEmpleado, String nombres, String apellidos, Float salario, Integer edad, Departamento idDepartamento, Usuarios idUsuario) {
+    public Empleado(Integer codEmpleado, String nombres, String apellidos, Float salario, Integer edad, int idDepartamento, Usuarios idUsuario) {
         this.codEmpleado = codEmpleado;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.salario = salario;
         this.edad = edad;
-        this.idDepartamento = idDepartamento;
+        this.idDepartamento = new Departamento (idDepartamento);
         this.idUsuario = idUsuario;
     }  
     
