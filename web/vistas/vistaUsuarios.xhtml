@@ -43,10 +43,52 @@
         <a href="#{request.contextPath}/faces/vistas/vistaUsuarios.xhtml" class="badge badge-dark"><li>Usuarios</li></a>
     </ul>
     </div>
-    <div style="width: 90%; padding-left: 5px">
+    <div style="width: 90%; padding-left: 5px; text-align:center">
       
         <!-- ACA HAREMOS NUESTRAS VISTAS-->
+        <center>
+        <h3>Soporte de base de datos - Usuarios</h3>
+        <div style="width: 50%;">
+        <h:form id="formulario" class="form-group">
+                    <h:inputText class="form-control" value="#{usuariosMBean.idusuario}"></h:inputText><br></br>
+                    <h:inputText class="form-control" value="#{usuariosMBean.usuario}"></h:inputText><br></br>
+                    <h:inputText  class="form-control" value="#{usuariosMBean.contra}"></h:inputText><br></br>
+                    <h:inputText class="form-control" value="#{usuariosMBean.nivel}"></h:inputText><br></br>
+                    <h:commandButton class="btn btn-success" value="Agregar" action="#{usuariosMBean.crearUsuarios()}"></h:commandButton>
+                    <h:commandButton class="btn btn-info" value="Modificar" action="#{usuariosMBean.modificarUsuarios()}"></h:commandButton>
+                    <h:commandButton class="btn btn-danger" value="Eliminar" action="#{usuariosMBean.eliminarUsuarios()}"></h:commandButton>            
+                </h:form>
+            </div>
+                <br></br>
+                </center>     
+                <center>
+                    <h:dataTable value="#{usuariosMBean.tablaUsuarios}" var="us" class="table table-hover">
+                <h:column>
+                    <f:facet name="header">ID USUARIOO</f:facet>
+                    <h:outputText value="#{us.idusuario}"></h:outputText>
+                    <img src="../vistas/recursos/modificar.png" height="20px"/>
+                    <img src="../vistas/recursos/borrar.png" height="20px"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">ID USUARIOS</f:facet>
+                    <h:outputText value="#{us.usuario}"></h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">CONTRASEÑAS</f:facet>
+                    <h:outputText value="#{us.contra}"></h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">NIVELES</f:facet>
+                    <h:outputText value="#{us.nivel}"></h:outputText>
+                </h:column>                    
+                </h:dataTable>
+                </center>
         
+        
+       
     </div>        
     </div>
         <footer class="sticky-footer">

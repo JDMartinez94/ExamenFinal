@@ -47,6 +47,47 @@
       
         <!-- ACA HAREMOS NUESTRAS VISTAS-->
         
+             <center>
+        <h3>Soporte de base de datos - Telefonos</h3>
+        <div style="width: 50%;">
+        <h:form id="formulario" class="form-group">
+            <h:inputText class="form-control" value="#{telefonoMBean.codTels}"></h:inputText><br></br>
+            <h:inputText class="form-control" value="#{telefonoMBean.telefono}"></h:inputText><br></br>
+            <h:inputText  class="form-control" value="#{telefonoMBean.telDescrip}"></h:inputText><br></br>
+                    <h:inputText class="form-control" value="#{usuariosMBean.nivel}"></h:inputText><br></br>
+                    <h:commandButton class="btn btn-success" value="Agregar" action="#{telefonoMBean.crearTelefono()}"></h:commandButton>
+                    <h:commandButton class="btn btn-info" value="Modificar" action="#{telefonoMBean.modificarTelefono()}"></h:commandButton>
+                    <h:commandButton class="btn btn-danger" value="Eliminar" action="#{telefonoMBean.eliminarTelefono()}"></h:commandButton>            
+                </h:form>
+            </div>
+                <br></br>
+                </center>     
+                <center>
+                    <h:dataTable value="#{telefonoMBean.tablaTelefono}" var="tel" class="table table-hover">
+                <h:column>
+                    <f:facet name="header">CODIGO DE TELEFONO</f:facet>
+                    <h:outputText value="#{tel.codTels}"></h:outputText>
+                    <img src="../vistas/recursos/modificar.png" height="20px"/>
+                    <img src="../vistas/recursos/borrar.png" height="20px"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">NUMERO DE TELEFONO</f:facet>
+                    <h:outputText value="#{tel.telefono}"></h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">DESCRIPCION</f:facet>
+                    <h:outputText value="#{tel.telDescrip}"></h:outputText>
+                </h:column>
+
+             
+                </h:dataTable>
+                </center>
+        
+        
+        
+        
     </div>        
     </div>
         <footer class="sticky-footer">
